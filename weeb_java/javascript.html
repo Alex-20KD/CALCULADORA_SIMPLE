@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultados {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function realizarOperaciones() {
+            const num1 = parseFloat(document.getElementById('numero1').value);
+            const num2 = parseFloat(document.getElementById('numero2').value);
+            let resultados = '';
+            for (let i = 1; i <= 5; i++) {
+                switch (i) {
+                    case 1:
+                        resultados += `Iteración ${i}: ${num1} + ${num2} = ${num1 + num2}<br>`;
+                        break;
+                    case 2:
+                        resultados += `Iteración ${i}: ${num1} - ${num2} = ${num1 - num2}<br>`;
+                        break;
+                    case 3:
+                        resultados += `Iteración ${i}: ${num1} * ${num2} = ${num1 * num2}<br>`;
+                        break;
+                    case 4:
+                        if (num2 !== 0) {
+                            resultados += `Iteración ${i}: ${num1} / ${num2} = ${num1 / num2}<br>`;
+                        } else {
+                            resultados += `Iteración ${i}: División por cero no es posible.<br>`;
+                        }
+                        break;
+                    case 5:
+                        resultados += `Iteración ${i}: ${num1} % ${num2} = ${num1 % num2}<br>`;
+                        break;
+                }
+            }
+            document.getElementById('resultados').innerHTML = resultados;
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora de Operaciones</h1>
+    <label for="numero1">Número 1:</label>
+    <input type="number" id="numero1" required>
+    <br>
+    <label for="numero2">Número 2:</label>
+    <input type="number" id="numero2" required>
+    <br>
+    <button onclick="realizarOperaciones()">Calcular</button>
+
+    <h2>Resultados:</h2>
+    <div id="resultados"></div>
+</body>
+</html>
